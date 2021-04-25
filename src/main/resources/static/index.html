@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+  <input type="text" id="name">
+  <input type="password" id="password">
+  <button onclick="fn()">登录</button>
+  <script>
+    function fn() {
+      console.log({
+          username:$('#name').val(),
+          password:$('#password').val()
+        })
+      $.ajax({
+        url:'/controller/login',
+        method:'POST',
+        data:{
+          username:$('#name').val(),
+          password:$('#password').val()
+        },
+        success:function(res) {
+          // 成功
+          console.log(res)
+          if(res.code == 200) {
+            window.location.href='/swagger-ui/index.html?data='+res.data
+          }
+        },
+        error:function(err) {
+          // 失败
+          console.log(err)
+        }
+      })
+    }
+  </script>
+</body>
+</html>

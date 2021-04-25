@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: dev
+  redis:
+    host: 120.77.14.136
+    port: 6379
+    password: 123456
+    database: 9
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0ms
